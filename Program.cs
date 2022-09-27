@@ -56,10 +56,8 @@
     /// <param name="board">The current board.</param>
     /// <returns>True if the game is over</returns>
     static bool IsGameOver(List<string> board)
-    {
-        
-        
-        return false;
+    {   
+        return IsWinner(board, "x") || IsWinner(board, "o") || IsTie(board);
     }
 
     /// <summary>Determines if the provided player has a tic tac toe.</summary>
@@ -68,6 +66,38 @@
     /// <returns></returns>
     static bool IsWinner(List<string> board, string player)
     {
+        if (board[0] == player && board[1] == player && board[2] == player)
+        {
+            return true;
+        }
+        else if (board[3] == player && board[4] == player && board[5] == player)
+        {
+            return true;
+        }
+        else if (board[6] == player && board[7] == player && board[8] == player)
+        {
+            return true;
+        }
+        else if (board[0] == player && board[3] == player && board[6] == player)
+        {
+            return true;
+        }
+        else if (board[1] == player && board[4] == player && board[7] == player)
+        {
+            return true;
+        }
+        else if (board[2] == player && board[5] == player && board[8] == player)
+        {
+            return true;
+        }
+        else if (board[0] == player && board[4] == player && board[8] == player)
+        {
+            return true;
+        }
+        else if (board[2] == player && board[4] == player && board[6] == player)
+        {
+            return true;
+        }
         return false;
     }
 
@@ -76,6 +106,7 @@
     /// <returns>True if the board is full.</returns>
     static bool IsTie(List<string> board)
     {
+        // Check if indexes of list board are digit if non are difits then game is tie and return true
         return false;
     }
 
@@ -84,7 +115,14 @@
     /// <returns>The next players sign (x or o)</returns>
     static string GetNextPlayer(string currentPlayer)
     {
-        return "x";
+        if (currentPlayer == "x")
+        {
+            return "o";
+        }
+        else 
+        {
+            return "x";
+        }
     }
 
     /// <summary>Gets the 1-based spot number associated with the user's choice.</summary>
