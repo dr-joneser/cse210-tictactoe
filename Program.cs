@@ -106,8 +106,13 @@
     /// <returns>True if the board is full.</returns>
     static bool IsTie(List<string> board)
     {
-        // Check if indexes of list board are digit if non are difits then game is tie and return true
-        return false;
+        if (board[0] != "1" & board[1] != "2" & board[2] != "3" & board[3] != "4" & board[4] != "5" 
+        & board[5] != "6" & board[6] != "7" & board[7] != "8" & board[8] != "9") {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /// <summary>Cycles through the players (from x to o and o to x)</summary>
@@ -130,7 +135,9 @@
     /// <returns>A 1-based spot number (not a 0-based index)</returns>
     static int GetMoveChoice(string currentPlayer)
     {
-        return 1;
+        Console.WriteLine($"{currentPlayer}'s turn to choose a square (1-9): ");
+        int input = Convert.ToInt32(Console.ReadLine());
+        return input;
     }
 
     /// <summary>
@@ -142,6 +149,7 @@
     /// <param name="currentPlayer">The current player's sign (x or o)</param>
     static void MakeMove(List<string> board, int choice, string currentPlayer)
     {
-
+        int inputIndex = (choice - 1);
+        board[inputIndex] = currentPlayer;
     }
 }
